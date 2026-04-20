@@ -31,6 +31,26 @@
 - **Engineering:** GCS checkpoint callbacks + resume logic essential for long training runs on Colab Pro+
 - **Engineering:** RF-DETR requires `num_workers=0` on Colab to prevent dataloader deadlock
 - **Engineering:** `caffeinate` command on Mac prevents sleep during long training runs
+- **Engineering:** Docker build requires `--platform linux/amd64` on M2 Mac for Cloud Run deployment
+
+## Deployment
+
+### Live Demo
+| Platform | URL | Purpose |
+|----------|-----|---------|
+| Ultralytics HUB | https://predict-69e551e576657ed89ece-dproatj77a-wn.a.run.app | Visual demo — upload image, see detections ✅ |
+| Cloud Run API | https://waymo-perception-725477696855.us-central1.run.app | Production REST API ✅ |
+
+### API Usage
+```bash
+# Health check
+curl https://waymo-perception-725477696855.us-central1.run.app/
+
+# Detect objects in image
+curl -X POST \
+  https://waymo-perception-725477696855.us-central1.run.app/detect \
+  -F "file=@your_image.jpg"
+```
 
 ## Notebooks
 
@@ -43,6 +63,7 @@
 | `waymo_05_yolo26x_150segment_training.ipynb` | Exp 3 — YOLO26x training on 150 segments |
 | `waymo_06_rfdetr_150segment_training.ipynb` | Exp 4 — RF-DETR-L training on 150 segments |
 | `waymo_07_ensemble_distillation.ipynb` | Exp 5 — Ensemble distillation (RF-DETR-L + YOLO26x → YOLOv8m) |
+| `waymo_08_Deployment.ipynb` | Exp 6 — FastAPI + Docker + Cloud Run + Ultralytics HUB |
 
 ## Experiment Plan
 
@@ -54,12 +75,13 @@
 | Exp 3 | NB5 | YOLO26x | 150 segments | 0.779 | ✅ Done |
 | Exp 4 | NB6 | RF-DETR-L | 150 segments | 0.826 | ✅ Done |
 | Exp 5 | NB7 | YOLOv8m Ensemble Distilled | 150 segments | **0.866** | ✅ Done |
-| Exp 6 | NB8 | Deployment | — | — | 🔲 Planned |
+| Exp 6 | NB8 | Deployment | — | — | ✅ Done |
 
 ## Tech Stack
-Python · YOLOv8 · YOLO26x · RF-DETR · Ensemble Distillation · WBF · Google Cloud Storage · Colab Pro+ · Pandas · NumPy · Matplotlib
+Python · YOLOv8 · YOLO26x · RF-DETR · Ensemble Distillation · WBF · FastAPI · Docker · Google Cloud Run · Ultralytics HUB · Google Cloud Storage · Colab Pro+ · Pandas · NumPy · Matplotlib
 
 ## Dataset
-[Waymo Open Dataset v1.4.2](https://waymo.com/open/) — 798 driving
-segments, 5 synchronized cameras (FRONT camera used), ground-truth
-annotations. 150 segments extracted (~29,700 images).
+[Waymo Open Dataset v1.4.2](https://waymo.com/open/) — 798 driving segments, 5 synchronized cameras (FRONT camera used), ground-truth annotations. 150 segments extracted (~29,700 images).
+
+## License
+This project uses the Waymo Open Dataset, licensed for **non-commercial use only** under the [Waymo Dataset License Agreement](https://waymo.com/open/terms/). Any models trained on this dataset may not be used for commercial purposes or deployed in real vehicles.
