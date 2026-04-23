@@ -1,5 +1,7 @@
 # waymo-perception-pipeline
 
+[ML Blog Series on Medium](https://medium.com/@slosetty18)
+
 ## Results
 
 ### Comparison vs All Experiments
