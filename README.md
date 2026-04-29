@@ -35,7 +35,11 @@
 - **Engineering:** `caffeinate` command on Mac prevents sleep during long training runs
 - **Engineering:** Docker build requires `--platform linux/amd64` on M2 Mac for Cloud Run deployment
 
-## Deployment
+  ## Observations
+- Model detects vehicles confidently (0.845) even on photos it has never seen before
+- Pedestrians are harder to detect on regular phone photos — model was trained on car roof camera, not street-level photos
+- Lowering confidence threshold from 0.35 to 0.05 finds more objects but also more false detections
+- Tested on real street photos from Phoenix and Nigeria — vehicles detected reliably in both
 
 ### Live Demo
 | Platform | URL | Purpose |
