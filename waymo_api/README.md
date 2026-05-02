@@ -18,7 +18,7 @@ Object detection REST API powered by an ensemble-distilled YOLOv8m model trained
 - Sign
 
 ## Project Structure
-
+```
 waymo_api/
 ├── app/
 │   ├── main.py          # FastAPI app with lifespan
@@ -33,7 +33,7 @@ waymo_api/
 ├── Dockerfile
 ├── docker-compose.yml
 └── requirements.txt
-
+```
 ## Run Locally
 
 ```bash
