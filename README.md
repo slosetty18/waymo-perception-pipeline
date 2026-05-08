@@ -34,12 +34,22 @@
 - **Engineering:** RF-DETR requires `num_workers=0` on Colab to prevent dataloader deadlock
 - **Engineering:** `caffeinate` command on Mac prevents sleep during long training runs
 - **Engineering:** Docker build requires `--platform linux/amd64` on M2 Mac for Cloud Run deployment
-
   ## Observations
 - Model detects vehicles confidently (0.845) even on photos it has never seen before
 - Pedestrians are harder to detect on regular phone photos — model was trained on car roof camera, not street-level photos
 - Lowering confidence threshold from 0.35 to 0.05 finds more objects but also more false detections
 - Tested on real street photos from Phoenix and Nigeria — vehicles detected reliably in both
+
+  ## Known Limitations & Production Gaps
+
+- **Sign recall not measured** — Sign class annotations exist but model shows 0 recall; not production-safe
+- **Pedestrian & Cyclist recall at 0 in baseline** — improved through iterations but still not at production threshold
+- **Front camera only** — production AV systems use 5 cameras + LiDAR fusion for 360° perception
+- **150 of 798 training segments used** — split 80% train / 20% val (~23,760 train / ~5,940 val images); training on full 798 segments may significantly improve recall on underrepresented classes
+- **Adverse weather & night condition coverage not verified** — model behavior in adverse conditions untested
+- **US cities only** — dataset collected across specific US locations; generalization to other countries, road layouts, and signage not validated
+- **Not validated on dashcam or street-level images** — model trained on roof-mounted camera at ~1920×1280; performance degrades on phone or street-level photos
+- **Inference tested on Colab GPU** — real-world edge deployment (Jetson, in-vehicle compute) not benchmarked
 
 ### Live Demo
 | Platform | URL | Purpose |
