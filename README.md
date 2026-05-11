@@ -52,11 +52,11 @@
 - **Inference tested on Colab GPU** — real-world edge deployment (Jetson, in-vehicle compute) not benchmarked
 
 ### Live Demo
-| Platform | URL | Purpose |
-|----------|-----|---------|
-| Ultralytics HUB | https://predict-69e551e576657ed89ece-dproatj77a-wn.a.run.app | Visual demo — upload image, see detections ✅ |
+ Platform | URL | Purpose |
+|---|---|---|
+| Ultralytics Platform | https://platform.ultralytics.com/ | Visual demo — upload image, see detections ✅ |
+| Ultralytics Inference API | https://predict-69e551e576657ed89ece-dproatj77a-wn.a.run.app | Ultralytics hosted inference endpoint ✅ |
 | Cloud Run API | https://waymo-perception-725477696855.us-central1.run.app | Production REST API ✅ |
-
 ### API Usage
 ```bash
 # Health check
