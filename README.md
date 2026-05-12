@@ -45,7 +45,7 @@
 - **Sign recall not measured** — Sign class annotations exist but model shows 0 recall; not production-safe
 - **Pedestrian & Cyclist recall at 0 in baseline** — improved through iterations but still not at production threshold
 - **Front camera only** — production AV systems use 5 cameras + LiDAR fusion for 360° perception
-- **150 of 798 training segments used** — split 80% train / 20% val (~23,760 train / ~5,940 val images); training on full 798 segments may significantly improve recall on underrepresented classes
+- **150 of 798 training segments used** — Train: 23,033 / Val: 5,759 (total: 28,792 images); training on full 798        segments may significantly improve recall on underrepresented classes
 - **Adverse weather & night condition coverage not verified** — model behavior in adverse conditions untested
 - **US cities only** — dataset collected across specific US locations; generalization to other countries, road layouts, and signage not validated
 - **Not validated on dashcam or street-level images** — model trained on roof-mounted camera at ~1920×1280; performance degrades on phone or street-level photos
